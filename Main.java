@@ -17,36 +17,6 @@ https://www.geeksforgeeks.org/overriding-equals-method-in-java/
 }"
 */
 
-/*
-This code is provided to give you a
-starting place. It should be modified.
-No further imports are needed.
-To earn full credit, you must also
-answer the following questions:
-
-Q1: Car and Engine are related
-by which, Inheritance or Composition? Composition. Engine should not inherit
-the attributes of a car -- in other words, an engine is not a type of car.
-
-Q2: Color and Red are related
-by which, Inheritance or Composition? Inheritance. Red is a color and can
-inherit attributes like maybe wavemlenth, frequency, tone, value, etc.
-
-Q3: Shirt and Clothing are related
-by which, Inheritance or Composition? Inheritance. Shirt is a type of clothing
-and can inherit the attributes thereof for example measurements or color.
-
-Q4: Furniture and Desk are related
-by which, Inheritance or Composition? Inheritance. Desk is a inheritance of 
-furniture because a desk is a kind of furniture.
-
-Q5: CellPhone and Battery are related
-by which, Inheritance or Composition? Composition. A batter is not a type of 
-cell phone so it does not inherit properties of a cellphone but is a part of
-a cell phone.
-
-*/
-
 // Imports
 import java.io.File;
 import java.io.FileWriter;
@@ -110,7 +80,7 @@ public class Main
 				// Once we have the attributes, we will pass them into a Person
 				// object that is called newPerson.
 				Person newPerson = new Person(name, height, weight);
-				// then we will add this Person object to personSet, which is
+				// Then we will add this Person object to personSet, which is
 				// an object that is also an array list. We use the add method
 				// that is in PersonSet that has been inherited from PersonList
 				// but has been overriden to check for duplicates.
@@ -137,35 +107,5 @@ public class Main
 		// method printpeople() from PersonSet.
 		System.out.println("\nEmployees: \n");
 		personSet.printpeople();
-		
-//		System.out.println("\nTesting the get index method: \n");
-//		System.out.println(personSet.get(0));
-		
-		/*
-		// Don't overcomplicate the data
-		// reading. After skipping the
-		// first row, you can use the 
-		// following to read a row of
-		// character info, assuming your
-		// Scanner is named "fileReader"
-		String name = fileReader.next();
-		double height = fileReader.nextDouble();
-		double weight = fileReader.nextDouble();
-		*/
-		
-		
-		
-		/*try
-		{	
-			FileWriter fileWriterOrder = new FileWriter("outputfile.txt");
-			fileWriterOrder.write("testing");
-			fileWriterOrder.close();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-			System.out.println(e);
-			System.exit(1);
-		}*/
 	}
 } // End of Main
