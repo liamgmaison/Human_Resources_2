@@ -18,6 +18,7 @@ https://www.geeksforgeeks.org/overriding-equals-method-in-java/
 
 // We will be using an arraylist so we need to import it...
 import java.util.ArrayList;
+import java.lang.StringBuilder;
 
 // This PersonSet class will implement PersonList to retrieve the add and get
 // methods. We will override the add method in order to implement a duplicate
@@ -26,6 +27,7 @@ public class PersonSet implements PersonList {
 	
 	// Protected because it is safe.
 	protected ArrayList<Person> people;
+	protected String peopleString;
 	
 	// Constructor to create an empty array list to populate.
 	public PersonSet()
@@ -89,21 +91,22 @@ public class PersonSet implements PersonList {
 	}
 	
 	// This is just a printer method. It prints.
-	public void printpeople()
+	public void printPeople()
 	{
 		for (int i = 0; i < people.size(); i++)
 		{
 			System.out.println(people.get(i));
 		}
-	}
+	} // End of printPeople()
 	
-	// toString() method stolen and unmodified...
-//	@Override
-//	public String toString()
-//	{
-//		return String.format("Name: %s\nHeight: %.2f\nWeight: %.2f\n", 
-//			person.name, person.height, person.weight);
-//	} // End of Override of toString() method.
-	
+	// Ovveride toString()
+	@Override
+	public void toString(Person person)
+	{
+		for (int i; i < people.size(); i++)
+		{
+			
+		} // End of the for loop for iteration
+	} // End of printPeopleString method
 	
 }

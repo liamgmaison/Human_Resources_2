@@ -30,8 +30,8 @@ public class Main
 		
 		// A: Create a test person object
 		
-		Person testPerson = new Person("Vault Dweller", 180.0, 180.0);
-		System.out.println(testPerson);
+//		Person testPerson = new Person("Vault Dweller", 180.0, 180.0);
+//		System.out.println(testPerson);
 		
 		// B: Create a PersonSet object
 		
@@ -41,7 +41,7 @@ public class Main
 		// is important to remember that the PersonSet object uses an ArrayList
 		// to store the Person objects that are created by the while loop.
 		PersonSet personSet = new PersonSet();
-		System.out.println(personSet);
+//		System.out.println(personSet);
 		//personSet.printpeople();
 		
 		// C: Read in data from hr.txt
@@ -107,7 +107,7 @@ public class Main
 		// We are printing the information contained in personSet using the 
 		// method printpeople() from PersonSet.
 		System.out.println("\nEmployees: \n");
-		personSet.printpeople();
+		personSet.printPeople();
 	}
 } // End of Main
 
