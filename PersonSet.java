@@ -97,4 +97,13 @@ public class PersonSet implements PersonList {
 		}
 	}
 	
+	// toString() method stolen and unmodified...
+//	@Override
+//	public String toString()
+//	{
+//		return String.format("Name: %s\nHeight: %.2f\nWeight: %.2f\n", 
+//			person.name, person.height, person.weight);
+//	} // End of Override of toString() method.
+	
+	
 }

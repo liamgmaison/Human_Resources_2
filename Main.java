@@ -50,7 +50,8 @@ public class Main
 		// gathering data input from an external file.
 		try {
 			// Open hr.txt that contains Nintendo human resources information
-			File file = new File("hr.txt");
+//			File file = new File(args[0]);
+			File file = new File("hr.txt"); // This is just for entry in IDE
 			// Creates a scanner to read in the file.
 			Scanner fileReader = new Scanner(file);
 			
@@ -109,3 +110,12 @@ public class Main
 		personSet.printpeople();
 	}
 } // End of Main
+
+/*
+Overall Feedback
+Code is mostly great, but I would like the output formatted the same as hr.txt, like this:
+
+return String.format("%-8s %12.0f %20.0f\n", name, height, weight);
+
+Also, I should be able to load in different files from the command prompt with something like java Main hr.txt, which means that the input file should not be hard coded like this: File file = new File("hr.txt"); but should use the input arguments: File file = new File(args[0]);
+*/
