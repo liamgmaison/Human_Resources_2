@@ -106,7 +106,7 @@ public class Main
 		
 		// We are printing the information contained in personSet using the 
 		// method printpeople() from PersonSet.
-		System.out.printf("%-8s %-12s %20s%n", "Name", "Height (cm)", "Weight (kg)");
+		System.out.printf("%-8s %-12s %21s%n", "Name", "Height (cm)", "Weight (kg)");
 		personSet.printPeople();
 	}
 } // End of Main
