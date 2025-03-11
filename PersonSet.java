@@ -19,6 +19,7 @@ https://www.geeksforgeeks.org/overriding-equals-method-in-java/
 // We will be using an arraylist so we need to import it...
 import java.util.ArrayList;
 import java.lang.StringBuilder;
+import java.awt.*;
 
 // This PersonSet class will implement PersonList to retrieve the add and get
 // methods. We will override the add method in order to implement a duplicate
@@ -27,7 +28,6 @@ public class PersonSet implements PersonList {
 	
 	// Protected because it is safe.
 	protected ArrayList<Person> people;
-	protected String peopleString;
 	
 	// Constructor to create an empty array list to populate.
 	public PersonSet()
@@ -101,12 +101,17 @@ public class PersonSet implements PersonList {
 	
 	// Ovveride toString()
 	@Override
-	public void toString(Person person)
+	public String toString()
 	{
-		for (int i; i < people.size(); i++)
+		StringBuilder strB = new StringBuilder();
+		strB.append("Name	Height (cm)		Weight (kg)\n");
+		
+		for (Person p : people)
 		{
-			
-		} // End of the for loop for iteration
-	} // End of printPeopleString method
+			strB.append(p.toString()).append("\n");
+		}
+		return strB.toString();
+		
+	}
 	
 }

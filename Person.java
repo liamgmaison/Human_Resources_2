@@ -72,7 +72,7 @@ public class Person {
 	@Override
 	public String toString()
 	{
-		return String.format("%-8s %12.0f %20.0f\n", 
+		return String.format("%-8s %-12.0f %19.0f\n", name, height, weight, 
 			name, height, weight);
 	} // End of Override of toString() method.
 	
