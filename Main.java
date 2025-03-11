@@ -108,6 +108,8 @@ public class Main
 		// method printpeople() from PersonSet.
 		System.out.printf("%-8s %-12s %21s%n", "Name", "Height (cm)", "Weight (kg)");
 		personSet.printPeople();
+		
+		System.out.print(personSet.toString());
 	}
 } // End of Main
 
