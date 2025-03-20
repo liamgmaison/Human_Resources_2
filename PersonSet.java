@@ -61,7 +61,7 @@ public class PersonSet implements PersonList {
 			return people.get(index);
 		}
 		return null;
-	}
+	} // End of get() method.
 	
 	// This method is the Boolean necessary to prevent duplicates. It takes in
 	// an object, iterates through the array list, and if a duplicate is 
@@ -102,15 +102,14 @@ public class PersonSet implements PersonList {
 	@Override
 	public String toString()
 	{
-		StringBuilder strB = new StringBuilder();
-		strB.append("Name	 Height (cm)		    Weight (kg)\n");
-		
-		for (Person p : people)
-		{
-			strB.append(p.toString()).append("\n");
-		}
-		return strB.toString();
-		
-	}
-	
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%-8s %12s %20s%n", "Name", 
+			"Height (cm)", "Weight (kg)"));
+			for (Person p : people) {
+				sb.append(p.toString());
+			}
+			return sb.toString();
+	}	
 }
+
+// UNMOD

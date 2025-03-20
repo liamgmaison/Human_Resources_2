@@ -1,0 +1,17 @@
+                 +-----------------+
+                 |   PersonList     |  <---- Interface (defines rules)
+                 +-----------------+
+                         ↑
+                         |
+          Implements     |
+                         |
+                 +-----------------+
+                 |    PersonSet     |  <---- Implements PersonList (base class)
+                 +-----------------+
+                         ↑
+          +--------------+--------------+
+          |                             |
+ +--------------------+       +----------------------+
+ |  PersonOrderedSet  |       |  PersonImperialSet  |
+ +--------------------+       +----------------------+
+       Sorts names           Converts metric → imperial

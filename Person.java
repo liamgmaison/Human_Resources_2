@@ -11,6 +11,7 @@ https://www.w3schools.com/java/java_arraylist.asp
 https://www.w3schools.com/java/java_polymorphism.asp
 https://youtu.be/GhslBwrRsnw?si=WRK-p3-LHWTUA205
 https://youtu.be/2hkngtWLGvE?si=jtTT5PVTLpsXpzGk
+https://www.geeksforgeeks.org/comparable-interface-in-java-with-examples/#
 2251 Example Files
 https://www.geeksforgeeks.org/overriding-equals-method-in-java/
 }"
@@ -41,19 +42,55 @@ public class Person implements Comparable<Person> {
 		this.name = p.name;
 		this.height = p.height;
 		this.weight = p.weight;
-	} // NEW
+	} // NEW: Copy of Constructor. I had some trouble with this program and 
+	  // realised that PersonImperialSet required a new person object with the
+	 // same values. Otherwise modifying the original version would modify both.
 	
+	// Getters
+	public String getName()
+	{
+		return name; 
+	} // End of getName()
+	
+	public Double getHeight()
+	{
+		return height;
+	} // End of getHeight()
+	
+	public Double getWeight()
+	{
+		return weight;
+	} // End of getWeight()
+	
+	// Setters
+	public void setName(String name)
+	{
+		this.name = name;
+	} // End of setName()
+	
+	public void setHeight(Double height)
+	{
+		this.height = height;
+	} // End of setHeight()
+	
+	public void setWeight(Double weight)
+	{
+		this.weight = weight;
+	} // End of setWeight()
+	
+	// This method allows sorting alphabetically and uses collections.sort in
+	// PersonOrderedSet to accomplish this.
 	@Override
 	public int compareTo(Person other)
 	{
 		return this.name.compareToIgnoreCase(other.name);
-	}
+	} // End of Override of compareTo() method
 	
 	// toString() method that can display Name, Height, and Weight
 	@Override
 	public String toString()
 	{
-		return String.format("%-8s %-12.0f %20.0f\n", name, height, weight, 
+		return String.format("%-8s %-12.2f %20.2f%n", name, height, weight, 
 			name, height, weight);
 	} // End of Override of toString() method.
 	

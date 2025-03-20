@@ -22,6 +22,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.BufferedWriter;
+
 
 public class Main 
 {
@@ -41,20 +43,24 @@ public class Main
 		// is important to remember that the PersonSet object uses an ArrayList
 		// to store the Person objects that are created by the while loop.
 		PersonSet personSet = new PersonSet();
-//		System.out.println(personSet);
-		//personSet.printpeople();
 		
 		// C: Read in data from hr.txt
 		
+		// Now we can read in any file without hard coding hr.txt.
+		String inputFile = args[0];
+		
+		// Created two sets. orderedSet will store alphabetically sorted
+		// information.
+		PersonOrderedSet orderedSet = new PersonOrderedSet();
+		// imperialSet will store height and weight in inches and pounds.
+		PersonImperialSet imperialSet = new PersonImperialSet();
+		
+		
 		// The try loop is for exception handling which is important when 
-		// gathering data input from an external file.
-		try {
-			// Open hr.txt that contains Nintendo human resources information
-//			File file = new File(args[0]);
-			File file = new File("hr.txt"); // This is just for entry in IDE
-			// Creates a scanner to read in the file.
-			Scanner fileReader = new Scanner(file);
-			
+		// gathering data input from an external file. I didn't know I could
+		// condense the code by instantiating in the try block. So cool!
+		try (Scanner fileReader = new Scanner (new File(inputFile)))
+		{
 			// This if statement skips the header.
 			// It first checks if the document has an empty line immediately
 			// with .hasNextLine(), but if not, it skips the line and starts 
@@ -78,14 +84,28 @@ public class Main
 				Double height = fileReader.nextDouble();
 				Double weight = fileReader.nextDouble();
 				
-				// Once we have the attributes, we will pass them into a Person
-				// object that is called newPerson.
-				Person newPerson = new Person(name, height, weight);
-				// Then we will add this Person object to personSet, which is
-				// an object that is also an array list. We use the add method
-				// that is in PersonSet that has been inherited from PersonList
-				// but has been overriden to check for duplicates.
-				personSet.add(newPerson);
+//				// Once we have the attributes, we will pass them into a Person
+//				// object that is called newPerson.
+//				Person newPerson = new Person(name, height, weight);
+//				// Then we will add this Person object to personSet, which is
+//				// an object that is also an array list. We use the add method
+//				// that is in PersonSet that has been inherited from PersonList
+//				// but has been overriden to check for duplicates.
+//				personSet.add(newPerson);
+				
+				// We create two new objects, personMetric and personCopy.
+				// personMetric will store the metric values as the original. 
+				// This is so I can simply use it to sort and not modify it
+				// when converting. The second copy is what I need to modify
+				// the original code and turn the values into imperial values.
+				Person personMetric = new Person(name, height, weight);
+				Person personCopy = new Person(personMetric);
+				
+				// We use the add methods which will either modify the data
+				// or sort automatically. Really cool!
+				orderedSet.add(personMetric);
+				imperialSet.add(personCopy);
+				
 			} // End of while loop
 			
 			// Once all the data has been entered into personSet, we close the 
@@ -104,13 +124,38 @@ public class Main
 			System.exit(1);
 		} // End of try catch.
 		
-		// We are printing the information contained in personSet using the 
-		// method printpeople() from PersonSet.
-		System.out.printf("%-8s %-12s %21s%n", "Name", "Height (cm)", "Weight (kg)");
-		personSet.printPeople();
+		// Here we are writing out the outputs into text documents in the root
+		// directory where main is located. They are modified and formatted. 
+		// They also have no duplicates.
+		writeToFile("hr_ordered_set_output.txt", orderedSet);
+		writeToFile("hr_imperial_set_output.txt", imperialSet);
 		
-		System.out.print(personSet.toString());
-	}
+		// Informs the user to check their directory for the file outputs.
+		System.out.println("\nTwo files have been made. Check directory.");
+		
+		// Print both sets to the console for the user to see a preview of what
+		// they ordered.
+		System.out.println("\nOrdered Set:");
+		System.out.println(orderedSet);
+		
+		System.out.println("\nImperial Set (USA! USA!):");
+		System.out.println(imperialSet);
+	} // End of main...whew!
+	
+	// A new method to write to file. It first opens a new file named filename
+	// and then it writes using the toString method. There is a try and catch
+	// loop in this if somehow the writer fails.
+	private static void writeToFile(String filename, PersonSet set)
+	{
+		try (BufferedWriter shakespeare = new BufferedWriter(new FileWriter(filename)))
+		{
+			shakespeare.write(set.toString());
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		} // End of try-catch
+	} // End of writeToFile
+	
 } // End of Main
 
 /*
