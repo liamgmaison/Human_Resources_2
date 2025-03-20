@@ -18,7 +18,7 @@ https://www.geeksforgeeks.org/overriding-equals-method-in-java/
 
 // This the creation of the class Person which holds the attributes name, 
 // height, and weight.
-public class Person {
+public class Person implements Comparable<Person> {
 	
 	// These attributes are supposed to be public because they need to be 
 	// accessed universally.
@@ -36,37 +36,18 @@ public class Person {
 		this.weight = weight;
 	} // End of Constructor
 	
-	// Getters
-	public String getName()
+	public Person(Person p)
 	{
-		return name; 
-	} // End of getName()
+		this.name = p.name;
+		this.height = p.height;
+		this.weight = p.weight;
+	} // NEW
 	
-	public Double getHeight()
+	@Override
+	public int compareTo(Person other)
 	{
-		return height;
-	} // End of getHeight()
-	
-	public Double getWeight()
-	{
-		return weight;
-	} // End of getWeight()
-	
-	// Setters
-	public void setName(String name)
-	{
-		this.name = name;
-	} // End of setName()
-	
-	public void setHeight(Double height)
-	{
-		this.height = height;
-	} // End of setHeight()
-	
-	public void setWeight(Double weight)
-	{
-		this.weight = weight;
-	} // End of setWeight()
+		return this.name.compareToIgnoreCase(other.name);
+	}
 	
 	// toString() method that can display Name, Height, and Weight
 	@Override
